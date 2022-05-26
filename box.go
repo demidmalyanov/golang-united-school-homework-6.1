@@ -44,9 +44,7 @@ func NewBox(shapesCapacity int) *box {
 // returns the error in case it goes out of the shapesCapacity range.
 func (b *box) AddShape(shape Shape) error {
 
-	_, err := b.checkIsFull()
-
-	if err != nil {
+	if _, err := b.checkIsFull(); err != nil {
 		return err
 	}
 
@@ -59,8 +57,7 @@ func (b *box) AddShape(shape Shape) error {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) GetByIndex(i int) (Shape, error) {
 
-	_, err := b.findByIndex(i)
-	if err != nil {
+	if _, err := b.findByIndex(i); err != nil {
 		return nil, err
 	}
 
@@ -71,8 +68,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 // ExtractByIndex allows getting shape by index and removes this shape from the list.
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ExtractByIndex(i int) (Shape, error) {
-	_, err := b.findByIndex(i)
-	if err != nil {
+	if _, err := b.findByIndex(i); err != nil {
 		return nil, err
 	}
 
@@ -88,8 +84,8 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 // ReplaceByIndex allows replacing shape by index and returns removed shape.
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ReplaceByIndex(i int, shape Shape) (Shape, error) {
-	_, err := b.findByIndex(i)
-	if err != nil {
+
+	if _, err := b.findByIndex(i); err != nil {
 		return nil, err
 	}
 
@@ -141,7 +137,7 @@ func (b *box) RemoveAllCircles() error {
 	}
 
 	if circleCount == 0 {
-		return fmt.Errorf("No circles found")
+		return fmt.Errorf("No circles found.")
 	}
 
 	return nil
