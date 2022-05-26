@@ -141,7 +141,7 @@ func (b *box) RemoveAllCircles() error {
 	}
 
 	if circleCount == 0 {
-		return fmt.Errorf("No circles found.")
+		return fmt.Errorf("No circles found")
 	}
 
 	return nil
